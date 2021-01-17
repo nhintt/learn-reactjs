@@ -3,27 +3,27 @@ import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import TodoList from '../../components/TodoList';
 import queryString from 'query-string';
 
-ListPage.propTypes = {
-
-};
+ListPage.propTypes = {};
 
 function ListPage(props) {
     const initTodoList = [
         {
             id: 1,
             title: 'Eat',
-            status: 'new'
+            status: 'new',
         },
+
         {
             id: 2,
             title: 'Sleep',
-            status: 'completed'
+            status: 'completed',
         },
         {
             id: 3,
             title: 'Code',
-            status: 'new'
-        }
+
+            status: 'new',
+        },
     ];
 
     const location = useLocation();
@@ -48,7 +48,7 @@ function ListPage(props) {
         //clone current array to the new one
         const newTodoList = [...todoList];
 
-        //toggle state 
+        //toggle state
         newTodoList[idx] = {
             ...newTodoList[idx],
             status: newTodoList[idx].status === 'new' ? 'completed' : 'new',
@@ -65,7 +65,7 @@ function ListPage(props) {
             pathname: match.path,
             search: queryString.stringify(queryParams),
         });
-    }
+    };
     const handleShowCompletedClick = () => {
         // setFilteredStatus('completed');
         const queryParams = { status: 'completed' };
@@ -73,7 +73,7 @@ function ListPage(props) {
             pathname: match.path,
             search: queryString.stringify(queryParams),
         });
-    }
+    };
     const handleShowNewClick = () => {
         // setFilteredStatus('new');
         const queryParams = { status: 'new' };
@@ -81,9 +81,9 @@ function ListPage(props) {
             pathname: match.path,
             search: queryString.stringify(queryParams),
         });
-    }
+    };
 
-    const renderedTodoList = todoList.filter(todo => filteredStatus === 'all' || todo.status === filteredStatus);
+    const renderedTodoList = todoList.filter((todo) => filteredStatus === 'all' || todo.status === filteredStatus);
 
     return (
         <div>
